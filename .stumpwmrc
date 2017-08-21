@@ -1,0 +1,23 @@
+ (setf *frame-number-map* "1234567890")
+ (run-commands
+   "gnewbg G2"
+   "gnewbg G3"
+   "gnewbg G4")
+(loop for i from 0 to 4
+  do
+    (define-key *top-map*
+      (kbd (format nil "M-~a" i))
+      (format nil "gselect ~a" i)))
+
+(defparameter *xscreensaver* "/usr/bin/xscreensaver-command")
+(defcommand lock () ()
+  "Lock the screen using xscreensaver."
+  (stumpwm:echo-string (current-screen) "Locking screen...")
+  (sb-ext:run-program *xscreensaver* '("-lock")))
+
+(define-key *root-map* (kbd "d") "exec dmenu_run")
+(define-key *root-map* (kbd "e") "exec xterm -e emacsclient -c -a ''")
+(define-key *root-map* (kbd "M") "exec xterm -e htop")
+
+(setf *mouse-focus-policy* :sloppy)
+(setf *input-window-gravity* :center)

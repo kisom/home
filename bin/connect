@@ -1,0 +1,5 @@
+#!/bin/sh
+
+NET="${1:-home}"
+nmcli c up id "$NET"
+

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+ACTIVE="$(nmcli connection show --active | sed 1d)"
+
+if [ -z "$ACTIVE" ]
+then
+	exit 0
+fi
+
+connection="$(echo $ACTIVE | awk '{print $1}')"
+nmcli connection down $connection

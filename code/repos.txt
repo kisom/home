@@ -1,0 +1,3 @@
+git@git.kyleisom.net:pub/site/blog
+git@git.kyleisom.net:pub/site/dl
+git@git.metacircular.net:kyle/lambda

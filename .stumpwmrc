@@ -15,6 +15,15 @@
   (stumpwm:echo-string (current-screen) "Locking screen...")
   (sb-ext:run-program *xscreensaver* '("-lock")))
 
+(defparameter *acpi-program* "/usr/bin/acpi")
+(defun get-acpi-status ()
+  (with-output-to-string (stream)
+			 (sb-ext:run-program *acpi-program* nil :output stream)))
+(defcommand acpi-status () ()
+  "Print ACPI status in the StumpWM message box."
+  (stumpwm:echo-string (current-screen) (get-acpi-status)))
+
+(define-key *root-map* (kbd "b") "acpi-status")
 (define-key *root-map* (kbd "d") "exec dmenu_run")
 (define-key *root-map* (kbd "e") "exec xterm -e emacsclient -c -a ''")
 (define-key *root-map* (kbd "M") "exec xterm -e htop")

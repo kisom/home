@@ -24,9 +24,12 @@
   (stumpwm:echo-string (current-screen) (get-acpi-status)))
 
 (define-key *root-map* (kbd "b") "acpi-status")
+(define-key *root-map* (kbd "c") "exec xfce4-terminal")
 (define-key *root-map* (kbd "d") "exec dmenu_run")
-(define-key *root-map* (kbd "e") "exec xterm -e emacsclient -c -a ''")
+(define-key *root-map* (kbd "e") "exec xfce4-terminal -x emacsclient -c -a ''")
+(define-key *root-map* (kbd "l") "lock")
 (define-key *root-map* (kbd "M") "exec xterm -e htop")
+(define-key *root-map* (kbd "RET") "exec xterm")
 
 (setf *mouse-focus-policy* :sloppy)
 (setf *input-window-gravity* :center)

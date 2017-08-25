@@ -113,3 +113,12 @@ if ! shopt -oq posix; then
 fi
 
 export EDITOR="/usr/bin/mg"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/kyle/.local/google-cloud-sdk/path.bash.inc' ]; then source '/home/kyle/.local/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/kyle/.local/google-cloud-sdk/completion.bash.inc' ]; then source '/home/kyle/.local/google-cloud-sdk/completion.bash.inc'; fi
+
+# set up kubectl completions
+alias kubecomplete='source <(kubectl completion bash)'

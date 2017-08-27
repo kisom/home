@@ -1,0 +1,7 @@
+[user]
+	name = Kyle Isom
+	email = kyle@imap.cc
+[color]
+	ui = false
+[core]
+	excludesfile = /home/kyle/.gitignore_global

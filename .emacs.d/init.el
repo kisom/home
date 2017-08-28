@@ -50,12 +50,22 @@
 
 ;; tell me where i'm at
 (column-number-mode)
+
+;;; i like cua-rectangle
+(cua-mode t)
+(cua-selection-mode 'emacs)
+(global-set-key (kbd "M-RET") 'cua-rectangle-mark-mode)
+
+(require 'scpaste)
+(setq scpaste-http-destination "https://p.kyleisom.net"
+      scpaste-scp-destination "p.kyleisom.net:sites/p/")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (cargo undo-tree magit auto-complete))))
+ '(package-selected-packages (quote (scpaste cargo undo-tree magit auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

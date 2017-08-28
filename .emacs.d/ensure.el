@@ -7,6 +7,7 @@
 	 cargo
 	 magit
 	 rust-mode
+	 scpaste
 	 undo-tree)))
   (dolist (package initial-package-list)
     (ensure-package package)))

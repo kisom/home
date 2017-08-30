@@ -122,3 +122,5 @@ if [ -f '/home/kyle/.local/google-cloud-sdk/completion.bash.inc' ]; then source 
 
 # set up kubectl completions
 alias kubecomplete='source <(kubectl completion bash)'
+
+export GOPATH=$HOME

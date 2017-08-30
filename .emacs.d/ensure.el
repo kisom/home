@@ -7,6 +7,7 @@
 	 cargo
 	 irfc
 	 magit
+	 markdown-mode
 	 rust-mode
 	 scpaste
 	 undo-tree)))

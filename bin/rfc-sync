@@ -1,0 +1,4 @@
+#!/bin/sh
+
+RFC_PATH="${1:-${HOME}/docs/rfc}"
+rsync -auvz --delete-after ftp.rfc-editor.org::rfcs-text-only/*.txt ${RFC_PATH}

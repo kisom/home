@@ -124,3 +124,6 @@ if [ -f '/home/kyle/.local/google-cloud-sdk/completion.bash.inc' ]; then source 
 alias kubecomplete='source <(kubectl completion bash)'
 
 export GOPATH=$HOME
+
+# added by Miniconda3 4.3.21 installer
+export PATH="/home/kyle/anaconda3/bin:$PATH"

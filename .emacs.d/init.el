@@ -12,11 +12,12 @@
 (load "/home/kyle/.emacs.d/ensure.el") ;; make sure useful packages are installed
 
 ;; reduce brain damage
-(tool-bar-mode -1)
-(menu-bar-mode -1)
+(tool-bar-mode 0)
+(menu-bar-mode 0)
 (setq inhibit-startup-screen t)
 (setq display-time-24hr-format t)
 (display-time-mode)
+(column-number-mode)
 
 ;; hippie-expand is the best
 (require 'hippie-exp)

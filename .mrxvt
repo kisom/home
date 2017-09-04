@@ -1,0 +1,3 @@
+Mrxvt.macro.Ctrl+Shift+V: Paste CLIPBOARD
+Mrxvt.macro.Ctrl+Shift+C: Exec !/usr/bin/xclip -o | /usr/bin/xclip -selection clipboard
+

@@ -3,7 +3,8 @@
     (package-install package)))
 
 (let ((initial-package-list
-       '(auto-complete
+       '(anaconda-mode
+	 auto-complete
 	 cargo
 	 irfc
 	 magit

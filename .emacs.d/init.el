@@ -48,6 +48,8 @@
 
 ;; i install things to /usr/local
 (add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path "/home/kyle/anaconda3/bin")
+
 
 ;; tell me where i'm at
 (column-number-mode)
@@ -63,6 +65,9 @@
 
 (require 'irfc)
 (require 'markdown-mode)
+
+;; python stuff
+(add-hook 'python-mode-hook 'anaconda-mode)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

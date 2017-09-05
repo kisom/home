@@ -5,3 +5,5 @@
 	ui = false
 [core]
 	excludesfile = /home/kyle/.gitignore_global
+[push]
+	default = simple

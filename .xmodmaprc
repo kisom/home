@@ -7,12 +7,12 @@
 ! add Mod1 = Alt_L
 
 !!! Swap caps lock and control, as one does.
-remove Lock = Caps_Lock
-remove Control = Control_L
-keysym Control_L = Caps_Lock
-keysym Caps_Lock = Control_L
-add Lock = Caps_Lock
-add Control = Control_L
+!remove Lock = Caps_Lock
+!remove Control = Control_L
+!keysym Control_L = Caps_Lock
+!keysym Caps_Lock = Control_L
+!add Lock = Caps_Lock
+!add Control = Control_L
 
 !!! On the X60, I kept hitting F1 instead of escape. Instead of learning
 !!! where the key actually was, I just made it do what I thought it

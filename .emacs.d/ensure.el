@@ -9,6 +9,8 @@
        '(anaconda-mode
 	 auto-complete
 	 cargo
+	 gnugo
+	 go ;; play the game
 	 go-autocomplete
 	 go-direx
 	 go-guru
@@ -16,6 +18,7 @@
 	 irfc
 	 magit
 	 markdown-mode
+	 pelican-mode
 	 rust-mode
 	 scpaste
 	 undo-tree)))

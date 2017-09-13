@@ -19,6 +19,9 @@
 (display-time-mode)
 (column-number-mode)
 
+;; useful when writing
+(global-set-key (kbd "C-c w") 'count-words)
+
 ;; hippie-expand is the best
 (require 'hippie-exp)
 (require 'auto-complete)
@@ -76,7 +79,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (go-autocomplete go-direx go-guru go-mode anaconda-mode markdown-mode irfc scpaste cargo undo-tree magit auto-complete))))
+    (pelican-mode gnugo go go-autocomplete go-direx go-guru go-mode anaconda-mode markdown-mode irfc scpaste cargo undo-tree magit auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

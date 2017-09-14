@@ -9,6 +9,7 @@
        '(anaconda-mode
 	 auto-complete
 	 cargo
+	 chess
 	 gnugo
 	 go ;; play the game
 	 go-autocomplete

@@ -1,3 +1,4 @@
+;;; startup without syntax highlighting
 (global-font-lock-mode 0)
 
 ;; set up package handling
@@ -77,6 +78,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("4561c67b0764aa6343d710bb0a6f3a96319252b2169d371802cc94adfea5cfc9" "5f95ce79b4a8870b3486b04de22ca2e0785b287da8779f512cdd847f42266989" default)))
+ '(custom-theme-directory "~/.emacs.d/themes")
  '(package-selected-packages
    (quote
     (chess pelican-mode gnugo go go-autocomplete go-direx go-guru go-mode anaconda-mode markdown-mode irfc scpaste cargo undo-tree magit auto-complete))))
@@ -86,3 +91,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(setq +DEFAULT-THEME+ "weyland-yutani")
+(defun toggle-fontlock ()
+  (if (font-lock-mode)
+      (progn
+	(message "disabling font-lock-mode")
+	(global-font-lock-mode 0))
+    (progn
+      (message "enabling font-lock-mode")
+      (load-theme +DEFAULT-THEME+)
+      (global-font-lock-mode t))))

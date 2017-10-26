@@ -124,6 +124,9 @@ if [ -f '/home/kyle/.local/google-cloud-sdk/completion.bash.inc' ]; then source 
 alias kubecomplete='source <(kubectl completion bash)'
 
 export GOPATH=$HOME
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/cuda-8.0/bin:$PATH
 
-# added by Miniconda3 4.3.21 installer
+# added by Anaconda3 4.4.0 installer
 export PATH="/home/kyle/anaconda3/bin:$PATH"
+export SBCL_HOME=/usr/lib/sbcl
+export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH

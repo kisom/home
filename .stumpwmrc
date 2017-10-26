@@ -1,9 +1,33 @@
- (setf *frame-number-map* "1234567890")
+(ql:quickload :swank)
+(let ((server-running nil))
+  (defcommand swank () ()
+    "Toggle the swank server on/off"
+    (if server-running
+        (progn
+          (swank:stop-server 4005)
+          (echo-string
+           (current-screen)
+           "Stopping swank.")
+          (setf server-running nil))
+        (progn
+          (swank:create-server :port 4005
+                               :style swank:*communication-style*
+                               :dont-close t)
+          (echo-string
+           (current-screen)
+           "Starting swank. M-x slime-connect RET RET, then (in-packqage stumpwm).")
+          (setf server-running t)))))
+
+(define-key *root-map* (kbd "C-s") "swank")
+
+(setf *frame-number-map* "1234567890")
  (run-commands
    "gnewbg G2"
    "gnewbg G3"
-   "gnewbg G4")
-(loop for i from 0 to 4
+   "gnewbg G4"
+   "gnewbg G5"
+)
+(loop for i from 0 to 5
   do
     (define-key *top-map*
       (kbd (format nil "M-~a" i))
@@ -29,6 +53,8 @@
 (define-key *root-map* (kbd "e") "exec emacsclient -c -a ''")
 (define-key *root-map* (kbd "l") "lock")
 (define-key *root-map* (kbd "C-i") "exec xfce4-terminal -x /home/kyle/bin/aipy")
+;;; for now, use the AIND conda env
+;; (define-key *root-map* (kbd "C-i") "exec xfce4-terminal -x tmux new-session /home/kyle/anaconda3/bin/ipython3")
 (define-key *root-map* (kbd "M") "exec xterm -e htop")
 (define-key *root-map* (kbd "P") "exec xfce4-terminal -x kpcli --kdb /home/kyle/Default.kdbx")
 (define-key *root-map* (kbd "RET") "exec xterm")

@@ -73,6 +73,32 @@
 ;; python stuff
 (add-hook 'python-mode-hook 'anaconda-mode)
 
+(when (file-exists-p (expand-file-name "~/quicklisp/slime-helper.el"))
+  (load (expand-file-name "~/quicklisp/slime-helper.el"))
+  (ensure-package 'slime)
+  ;; Replace "sbcl" with the path to your implementation
+  (setq inferior-lisp-program "sbcl"))
+
+;;; 
+;;;                                                      _:_
+;;;                                                     '-.-'
+;;;                                            ()      __.'.__
+;;;                                         .-:--:-.  |_______|
+;;;                                  ()      \____/    \=====/
+;;;                                  /\      {====}     )___(
+;;;                       (\=,      //\\      )__(     /_____\
+;;;       __    |'-'-'|  //  .\    (    )    /____\     |   |
+;;;      /  \   |_____| (( \_  \    )__(      |  |      |   |
+;;;      \__/    |===|   ))  `\_)  /____\     |  |      |   |
+;;;     /____\   |   |  (/     \    |  |      |  |      |   |
+;;;      |  |    |   |   | _.-'|    |  |      |  |      |   |
+;;;      |__|    )___(    )___(    /____\    /____\    /_____\
+;;;     (====)  (=====)  (=====)  (======)  (======)  (=======)
+;;;     }===={  }====={  }====={  }======{  }======{  }======={
+;;;    (______)(_______)(_______)(________)(________)(_________)
+(setq chess-ai-depth 2)
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -82,9 +108,11 @@
    (quote
     ("4561c67b0764aa6343d710bb0a6f3a96319252b2169d371802cc94adfea5cfc9" "5f95ce79b4a8870b3486b04de22ca2e0785b287da8779f512cdd847f42266989" default)))
  '(custom-theme-directory "~/.emacs.d/themes")
+ '(chess-default-display (quote chess-plain))
+ '(global-font-lock-mode nil)
  '(package-selected-packages
    (quote
-    (chess pelican-mode gnugo go go-autocomplete go-direx go-guru go-mode anaconda-mode markdown-mode irfc scpaste cargo undo-tree magit auto-complete))))
+    (slime chess pelican-mode gnugo go go-autocomplete go-direx go-guru go-mode anaconda-mode markdown-mode irfc scpaste cargo undo-tree magit auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -102,3 +130,7 @@
       (message "enabling font-lock-mode")
       (load-theme +DEFAULT-THEME+)
       (global-font-lock-mode t))))
+
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+

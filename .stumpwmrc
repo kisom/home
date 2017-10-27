@@ -1,25 +1,3 @@
-(ql:quickload :swank)
-(let ((server-running nil))
-  (defcommand swank () ()
-    "Toggle the swank server on/off"
-    (if server-running
-        (progn
-          (swank:stop-server 4005)
-          (echo-string
-           (current-screen)
-           "Stopping swank.")
-          (setf server-running nil))
-        (progn
-          (swank:create-server :port 4005
-                               :style swank:*communication-style*
-                               :dont-close t)
-          (echo-string
-           (current-screen)
-           "Starting swank. M-x slime-connect RET RET, then (in-packqage stumpwm).")
-          (setf server-running t)))))
-
-(define-key *root-map* (kbd "C-s") "swank")
-
 (setf *frame-number-map* "1234567890")
  (run-commands
    "gnewbg G2"
@@ -32,6 +10,27 @@
     (define-key *top-map*
       (kbd (format nil "M-~a" i))
       (format nil "gselect ~a" i)))
+
+;;; (let ((server-running nil))
+;;;   (defcommand swank () ()
+;;;     "Toggle the swank server on/off"
+;;;     (if server-running
+;;;         (progn
+;;;           (swank:stop-server 4005)
+;;;           (echo-string
+;;;            (current-screen)
+;;;            "Stopping swank.")
+;;;           (setf server-running nil))
+;;;         (progn
+;;;           (swank:create-server :port 4005
+;;;                                :style swank:*communication-style*
+;;;                                :dont-close t)
+;;;           (echo-string
+;;;            (current-screen)
+;;;            "Starting swank. M-x slime-connect RET RET, then (in-packqage stumpwm).")
+;;;           (setf server-running t)))))
+
+(define-key *root-map* (kbd "C-s") "swank")
 
 (defparameter *xscreensaver* "/usr/bin/xscreensaver-command")
 (defcommand lock () ()

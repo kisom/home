@@ -121,12 +121,29 @@ if [ -f '/home/kyle/.local/google-cloud-sdk/path.bash.inc' ]; then source '/home
 if [ -f '/home/kyle/.local/google-cloud-sdk/completion.bash.inc' ]; then source '/home/kyle/.local/google-cloud-sdk/completion.bash.inc'; fi
 
 # set up kubectl completions
-alias kubecomplete='source <(kubectl completion bash)'
+if command -v >/dev/null 2>&1
+then
+	alias kubecomplete='source <(kubectl completion bash)'
+fi
 
 export GOPATH=$HOME
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/cuda-8.0/bin:$PATH
 
-# added by Anaconda3 4.4.0 installer
-export PATH="/home/kyle/anaconda3/bin:$PATH"
+if [ -d $HOME/anaconda3 ]
+then
+	# added by Anaconda3 4.4.0 installer
+	export PATH="$HOME/anaconda3/bin:$PATH"
+fi
+
 export SBCL_HOME=/usr/lib/sbcl
-export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
+if [ -d /usr/local/cuda* ]
+then
+	export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
+fi
+
+# set up keychain
+if command -v keychain >/dev/null 2>&1
+then
+	keychain -q
+	source $HOME/.keychain/$(hostname -s)-sh
+fi

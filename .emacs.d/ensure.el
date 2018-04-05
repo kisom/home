@@ -10,6 +10,7 @@
 	 auto-complete
 	 cargo
 	 chess
+	 geiser
 	 gnugo
 	 go ;; play the game
 	 go-autocomplete
@@ -17,9 +18,13 @@
 	 go-guru
 	 go-mode
 	 irfc
+	 lua-mode
+	 luarocks
 	 magit
 	 markdown-mode
+	 paredit
 	 pelican-mode
+	 racket-mode
 	 rust-mode
 	 scpaste
 	 slime

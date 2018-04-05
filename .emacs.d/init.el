@@ -10,8 +10,11 @@
 	     '("melpa" . "http://melpa.org/packages/"))
 
 (package-initialize)
-(load "/home/kyle/.emacs.d/ensure.el") ;; make sure useful packages are installed
-
+(require 'cl)
+(let* ((home-dir (getenv "HOME"))
+       (ensure-lisp (concatenate 'string home-dir "/.emacs.d/ensure.el")))
+  (load ensure-lisp))
+ 
 ;; reduce brain damage
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -54,7 +57,6 @@
 (add-to-list 'exec-path "/usr/local/bin")
 (add-to-list 'exec-path "/home/kyle/anaconda3/bin")
 
-
 ;; tell me where i'm at
 (column-number-mode)
 
@@ -66,6 +68,13 @@
 (require 'scpaste)
 (setq scpaste-http-destination "https://p.kyleisom.net"
       scpaste-scp-destination "p.kyleisom.net:sites/p/")
+
+;;; useful for writing
+(global-set-key (kbd "C-x w") 'count-words)
+
+;;; used with pollen
+(global-set-key (kbd "C-c C-d")
+		(lambda () (interactive) (insert "\u25ca")))
 
 (require 'irfc)
 (require 'markdown-mode)
@@ -112,7 +121,7 @@
  '(global-font-lock-mode nil)
  '(package-selected-packages
    (quote
-    (slime chess pelican-mode gnugo go go-autocomplete go-direx go-guru go-mode anaconda-mode markdown-mode irfc scpaste cargo undo-tree magit auto-complete))))
+    (guile-scheme slime chess pelican-mode gnugo go go-autocomplete go-direx go-guru go-mode anaconda-mode markdown-mode irfc scpaste cargo undo-tree magit auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -133,4 +142,3 @@
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
-

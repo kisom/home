@@ -17,3 +17,5 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 PS1="%~
 (%?) <`hostname -s`:`whoami`> $ "
+
+source $HOME/.profile

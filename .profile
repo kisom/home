@@ -20,3 +20,13 @@ fi
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"
+PROFILES=$HOME/.profile.d
+
+if [ -d $PROFILES ]
+then
+	for conf in $(ls $PROFILES/*.sh)
+	do
+		source $conf
+	done
+fi
+

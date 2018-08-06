@@ -1,0 +1,10 @@
+alias co='git checkout'
+alias com='git commit'
+alias push='git push'
+alias pull='git pull'
+alias st='git status'
+alias stu='git status --untracked all'
+alias sti='git status --untracked none'
+alias prb='git pull --rebase'
+alias pruneo='git remote prune origin'
+

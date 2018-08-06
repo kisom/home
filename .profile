@@ -29,3 +29,6 @@ then
 	done
 fi
 
+ldrc () {
+	source $PROFILES/${1}.sh
+}

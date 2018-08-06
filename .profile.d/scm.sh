@@ -7,4 +7,4 @@ alias stu='git status --untracked all'
 alias sti='git status --untracked none'
 alias prb='git pull --rebase'
 alias pruneo='git remote prune origin'
-
+alias gtl='git rev-parse --show-toplevel'

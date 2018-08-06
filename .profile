@@ -19,9 +19,8 @@ fi
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
-export PATH="$HOME/.cargo/bin:$PATH"
+# set up any additional scripts
 PROFILES=$HOME/.profile.d
-
 if [ -d $PROFILES ]
 then
 	for conf in $(ls $PROFILES/*.sh)

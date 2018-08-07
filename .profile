@@ -19,10 +19,10 @@ fi
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
-if [ "$SHELL" = "bash" ]
+if [ "${SHELL##*/}" = "bash" ]
 then
 	[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-elif [ "$SHELL" = "zsh" ]
+elif [ "${SHELL##*/}" = "zsh" ]
 then
 	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fi

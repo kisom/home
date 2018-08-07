@@ -8,6 +8,7 @@ then
 elif [ -x /usr/local/go/bin/go ]
 then
 	CONFIGURE_GO=yes
+	PATH=$PATH:/usr/local/go/bin
 fi
 
 if [ "$CONFIGURE_GO" = "yes" ]

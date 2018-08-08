@@ -1,3 +1,13 @@
-git@git.kyleisom.net:pub/site/blog
-git@git.kyleisom.net:pub/site/dl
-git@git.metacircular.net:kyle/lambda
+kisom/devlog
+kisom/sandbox
+kisom/last24
+kisom/notebook
+kisom/ng
+kisom/mlnd
+kisom/kaggle
+kisom/klogger
+kisom/libemsha
+kisom/cryptutils
+kisom/sicp
+kisom/eagle
+kisom/tecs

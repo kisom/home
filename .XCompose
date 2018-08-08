@@ -110,3 +110,9 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 <Multi_key> <Y> <space>                : "Η"        U0397                # GREEK CAPITAL LETTER ΕΤΑ
 <Multi_key> <space> <Z>                : "Ζ"        U0396                # GREEK CAPITAL LETTER ZETA
 <Multi_key> <Z> <space>                : "Ζ"        U0396                # GREEK CAPITAL LETTER ZETA
+
+<Multi_key> <a> <v>		       : "Ɐ"	    U2200		 # FOR ALL
+<Multi_key> <E> <E>		       : "∃"	    U2203		 # THERE EXISTS
+
+
+

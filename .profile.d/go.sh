@@ -13,7 +13,10 @@ fi
 
 if [ "$CONFIGURE_GO" = "yes" ]
 then
-	export GOPATH=$HOME
+	if [ -z "$GOPATH" ]
+	then
+		export GOPATH=$HOME
+	fi
 	
 	alias gob='go build'
 	alias gog='go get'

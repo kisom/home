@@ -127,13 +127,6 @@ then
 	export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
 fi
 
-# set up keychain
-if command -v keychain >/dev/null 2>&1
-then
-	keychain -q
-	source $HOME/.keychain/$(hostname -s)-sh
-fi
-
 # set up rust
 if [ -f $HOME/.cargo/env ]
 then

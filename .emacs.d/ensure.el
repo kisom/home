@@ -18,6 +18,7 @@
 	 go-guru
 	 go-mode
 	 irfc
+         keychain-environment
 	 lua-mode
 	 luarocks
 	 magit

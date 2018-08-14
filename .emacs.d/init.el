@@ -142,3 +142,5 @@
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+(keychain-refresh-environment)

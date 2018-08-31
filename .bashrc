@@ -132,3 +132,18 @@ if [ -f $HOME/.cargo/env ]
 then
 	source $HOME/.cargo/env
 fi
+
+# set up any additional scripts
+PROFILES=$HOME/.profile.d
+if [ -d $PROFILES ]
+then
+	for conf in $(ls $PROFILES/*.sh)
+	do
+		source $conf
+	done
+fi
+
+ldrc () {
+	source $PROFILES/${1}.sh
+}
+

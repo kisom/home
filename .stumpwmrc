@@ -120,7 +120,7 @@
 (defcommand lock () ()
   "Lock the screen by invoking xscreensaver."
   (stumpwm:echo-string (current-screen) "Locking screen...")
-  (sb-ext:run-program "/usr/local/bin/xscreensaver-command"
+  (sb-ext:run-program "/usr/bin/xscreensaver-command"
 		      '("-lock")))
 
 (defun exec-for-status (path &rest args)
@@ -177,7 +177,7 @@
 (setf *input-window-gravity* :center)
 
 (sb-ext:run-program "/usr/bin/xsetroot"
-                    '("-solid" "black")))
+                    '("-solid" "black"))
 (message "Ready.")
 
 ;; add ssh keys

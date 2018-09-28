@@ -1,5 +1,5 @@
 ;;; startup without syntax highlighting
-(global-font-lock-mode 0)
+;;; (global-font-lock-mode 0)
 
 ;; set up package handling
 (require 'package)
@@ -54,6 +54,7 @@
 (global-set-key (kbd "M-q") 'fill-paragraph)
 
 ;; i install things to /usr/local
+(add-to-list 'exec-path "/home/kyle/bin")
 (add-to-list 'exec-path "/usr/local/bin")
 (add-to-list 'exec-path "/home/kyle/anaconda3/bin")
 
@@ -81,6 +82,11 @@
 
 ;; python stuff
 (add-hook 'python-mode-hook 'anaconda-mode)
+
+;; golang stuff
+(setq gofmt-command "goimports")
+(require 'go-mode)
+(add-hook 'before-save-hook 'gofmt-before-save)
 
 (when (file-exists-p (expand-file-name "~/quicklisp/slime-helper.el"))
   (load (expand-file-name "~/quicklisp/slime-helper.el"))
@@ -121,7 +127,7 @@
  '(global-font-lock-mode nil)
  '(package-selected-packages
    (quote
-    (guile-scheme slime chess pelican-mode gnugo go go-autocomplete go-direx go-guru go-mode anaconda-mode markdown-mode irfc scpaste cargo undo-tree magit auto-complete))))
+    (go-imports guile-scheme slime chess pelican-mode gnugo go go-autocomplete go-direx go-guru go-mode anaconda-mode markdown-mode irfc scpaste cargo undo-tree magit auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -144,3 +150,36 @@
 (put 'downcase-region 'disabled nil)
 
 (keychain-refresh-environment)
+
+;;; Support for the fira-code font ligatures.
+(when (window-system)
+  (set-frame-font "Fira Code")
+  (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
+		 (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
+		 (36 . ".\\(?:>\\)")
+		 (37 . ".\\(?:\\(?:%%\\)\\|%\\)")
+		 (38 . ".\\(?:\\(?:&&\\)\\|&\\)")
+		 (42 . ".\\(?:\\(?:\\*\\*/\\)\\|\\(?:\\*[*/]\\)\\|[*/>]\\)")
+		 (43 . ".\\(?:\\(?:\\+\\+\\)\\|[+>]\\)")
+		 (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
+		 (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=-]\\)")
+		 (47 . ".\\(?:\\(?:\\*\\*\\|//\\|==\\)\\|[*/=>]\\)")
+		 (48 . ".\\(?:x[a-zA-Z]\\)")
+		 (58 . ".\\(?:::\\|[:=]\\)")
+		 (59 . ".\\(?:;;\\|;\\)")
+		 (60 . ".\\(?:\\(?:!--\\)\\|\\(?:~~\\|->\\|\\$>\\|\\*>\\|\\+>\\|--\\|<[<=-]\\|=[<=>]\\||>\\)\\|[*$+~/<=>|-]\\)")
+		 (61 . ".\\(?:\\(?:/=\\|:=\\|<<\\|=[=>]\\|>>\\)\\|[<=>~]\\)")
+		 (62 . ".\\(?:\\(?:=>\\|>[=>-]\\)\\|[=>-]\\)")
+		 (63 . ".\\(?:\\(\\?\\?\\)\\|[:=?]\\)")
+		 (91 . ".\\(?:]\\)")
+		 (92 . ".\\(?:\\(?:\\\\\\\\\\)\\|\\\\\\)")
+		 (94 . ".\\(?:=\\)")
+		 (119 . ".\\(?:ww\\)")
+		 (123 . ".\\(?:-\\)")
+		 (124 . ".\\(?:\\(?:|[=|]\\)\\|[=>|]\\)")
+		 (126 . ".\\(?:~>\\|~~\\|[>=@~-]\\)")
+		 )
+	       ))
+    (dolist (char-regexp alist)
+      (set-char-table-range composition-function-table (car char-regexp)
+			    `([,(cdr char-regexp) 0 font-shape-gstring])))))

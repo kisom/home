@@ -5,6 +5,7 @@ set cinoptions=t0,+4,(4,u4,w1
 set confirm
 set encoding=utf-8
 set incsearch
+set hidden
 set mouse=a
 set nocompatible
 set noexpandtab
@@ -21,35 +22,8 @@ colorscheme eink
 set background=light
 source /usr/share/vim/vim80/ftplugin/man.vim
 
-filetype off
-filetype plugin indent on
-syntax off
-
-" ^n/^p to switch between tabs
-nnoremap <C-n> :tabnext<Enter>
-nnoremap <C-p> :tabprevious<Enter>
-
-" StumpWM uses C-t as a leader key.
-nnoremap <C-[> :pop<Enter>
-
-" switch between relative and absolute number
-nn <F2> :setlocal relativenumber! relativenumber?<CR>
-nn <F3> :setlocal number! number?<CR>
-
-" toggle search highlighting (off by default)
-nn <F4> :setlocal hlsearch! hlsearch?<CR>
-
-" indent the current file with indent(1)
-nn ,i :%!indent -st<CR>
-
-" make clean
-nn ,c :silent! make clean \| redraw! \| cw<CR><CR>
-nn ,t :silent! make tags \| redraw! \| cw<CR><CR>
-
-" mk options
-nn ,M :!mk<CR>
-nn ,C :!mk clean<CR>
-nn ,N :!mk nuke<CR>
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
 
 " KNR mode and highlight lines > 80 chars
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
@@ -62,20 +36,6 @@ set cinoptions=:0,t0,+4,(4
 " backspace
 imap ^? ^H
 
-" ctrl up and ctrl down in tmux
-"if &term == "screen"
-"        set t_kN=^[[6;*~
-"        set t_kP=^[[5;*~
-"endif
-
-" spell checking
-" text & mutt files
-au BufNewFile,BufRead /tmp/mutt*,/tmp/cvs*,*.txt set tw=72 noai noshowmatch
-au BufNewFile,BufRead /tmp/mutt*,/tmp/cvs*,*.txt setlocal spell spelllang=en_us
-au BufNewFile,BufRead /tmp/mutt*,/tmp/cvs*,*.txt syntax off
-" git commits
-au BufNewFile,BufRead *.git/COMMIT_EDITMSG set tw=72 noai noshowmatch
-au BufNewFile,BufRead *.git/COMMIT_EDITMSG setlocal spell spelllang=en_us
 " f7 toggles spelling on/off
 nn <F7> :setlocal spell! spell?<CR>
 
@@ -91,6 +51,7 @@ let mapleader=','
 " quickfix :make
 nmap <silent> <Leader>m :wa<CR>:silent! make \| redraw! \| cw<CR><CR>
 vmap <silent> <Leader>m :wa<CR>:silent! make \| redraw! \| cw<CR><CR>
+nn ,c :silent! make clean \| redraw! \| cw<CR><CR>
 " handy shortcuts
 map <Leader>h :ccl<CR>
 map <Leader>s :cw<CR>
@@ -102,42 +63,11 @@ map <Leader>p :cp<CR>
 " format selection
 map <Leader>f :!fmt<CR>
 
+
 " @c comment, @u uncomment, @p print function name
 let @u='0xx$xx^['
 let @c='I/*^[A*/^['
 let @p='ofprintf(stderr, "%s\n", __func__);^['
-
-function! s:ExecuteInShell(command, bang)
-        let _ = a:bang != '' ? s:_ : a:command == '' ? '' : join(map(split(a:command), 'expand(v:val)'))
-
-        if (_ != '')
-                let s:_ = _
-                let bufnr = bufnr('%')
-                let winnr = bufwinnr('^' . _ . '$')
-                silent! execute  winnr < 0 ? 'new ' . fnameescape(_) : winnr . 'wincmd w'
-                setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap
-                silent! :%d
-                let message = 'Execute ' . _ . '...'
-                call append(0, message)
-                echo message
-                silent! 2d | resize 1 | redraw
-                silent! execute 'silent! %!'. _
-                silent! execute 'resize ' . line('$')
-                silent! execute 'autocmd BufUnload <buffer> execute bufwinnr(' . bufnr . ') . ''wincmd w'''
-                silent! execute 'autocmd BufEnter <buffer> execute ''resize '' .  line(''$'')'
-                silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . _ . ''', '''')<CR>'
-                silent! execute 'nnoremap <silent> <buffer> <LocalLeader>g :execute bufwinnr(' . bufnr . ') . ''wincmd w''<CR>'
-        endif
-endfunction
-
-command! -complete=shellcmd -nargs=* -bang Shell call s:ExecuteInShell(<q-args>, '<bang>')
-cabbrev shell Shell
-
-" command! -bang Fixmake 
-
-" nmap <silent> <Leader>b :wa<CR>:silent! !go build \| redraw! \| cw<CR><CR>
-" nmap <silent> <Leader>o :wa<CR>:silent! !go fmt \| redraw! \| cw<CR><CR>
-" nmap <silent> <Leader>t :wa<CR>:silent! !go test \| redraw! \| cw<CR><CR>
 
 :ab #d #define
 :ab #i #include
@@ -145,15 +75,30 @@ cabbrev shell Shell
 autocmd FileType make setlocal noexpandtab
 autocmd FileType c setlocal noexpandtab
 autocmd FileType cc setlocal noexpandtab
-autocmd FileType python setlocal shiftwidth=4 softtabstop=4
-
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd FileType ada setlocal expandtab shiftwidth=3 softtabstop=3 tabstop=3
 
-" Go language stuff
-autocmd FileType go setlocal noexpandtab
-autocmd FileType go filetype plugin on
-autocmd FileType go filetype indent on
-autocmd FileType go compiler go
-au FileType c au BufWritePost *.[ch] silent !ctags -R *.[ch] &
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
+" Plugins
 
+" Initialization
+call plug#begin('~/.vim/bundle')
+
+Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf'
+
+call plug#end()
+
+" NERDTree
+map <Leader>o :NERDTree<CR>
+
+" FZF
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+command! FZFBuffers call fzf#run({'source': map(range(1, bufnr('$')), 'bufname(v:val)'), 'sink': 'e', 'down': '30%'})
+map <Leader>b :FZFBuffers<CR>

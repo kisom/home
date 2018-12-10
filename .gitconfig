@@ -8,3 +8,5 @@
 	editor = /usr/bin/mg
 [push]
 	default = simple
+[http]
+	cookiefile = /home/kyle/.gitcookies

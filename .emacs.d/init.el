@@ -122,12 +122,12 @@
  '(chess-default-display (quote chess-plain))
  '(custom-safe-themes
    (quote
-    ("4561c67b0764aa6343d710bb0a6f3a96319252b2169d371802cc94adfea5cfc9" "5f95ce79b4a8870b3486b04de22ca2e0785b287da8779f512cdd847f42266989" default)))
+    ("bf390ecb203806cbe351b966a88fc3036f3ff68cd2547db6ee3676e87327b311" "e1943fd6568d49ec819ee3711c266a8a120e452ba08569045dd8f50cc5ec5dd3" "4561c67b0764aa6343d710bb0a6f3a96319252b2169d371802cc94adfea5cfc9" "5f95ce79b4a8870b3486b04de22ca2e0785b287da8779f512cdd847f42266989" default)))
  '(custom-theme-directory "~/.emacs.d/themes")
- '(global-font-lock-mode nil)
+ '(global-font-lock-mode t)
  '(package-selected-packages
    (quote
-    (go-imports guile-scheme slime chess pelican-mode gnugo go go-autocomplete go-direx go-guru go-mode anaconda-mode markdown-mode irfc scpaste cargo undo-tree magit auto-complete))))
+    (blackboard-bold-mode blacken jedi minimal-theme monochrome-theme monotropic-theme nimbus-theme noctilux-theme nord-theme nordless-theme northcode-theme paganini-theme paper-theme melancholy-theme go-imports guile-scheme slime chess pelican-mode gnugo go go-autocomplete go-direx go-guru go-mode anaconda-mode markdown-mode irfc scpaste cargo undo-tree magit auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -152,4 +152,6 @@
 (keychain-refresh-environment)
 
 ;;; Load fira-code support.
-(load "~/.emacs.d/fira-code.el")
+(when (window-system)
+  (set-frame-font "Fira Code 12"))
+;; (load "~/.emacs.d/fira-code.el")

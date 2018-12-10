@@ -147,3 +147,7 @@ ldrc () {
 	source $PROFILES/${1}.sh
 }
 
+if [ -d /opt/movidius ]
+then
+	export PYTHONPATH="${PYTHONPATH}:/opt/movidius/caffe/python"
+fi

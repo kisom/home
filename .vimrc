@@ -85,6 +85,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf'
 Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'ambv/black', { 'for': 'python' }
 
 " Themes
 Plug 'KKPMW/oldbook-vim' 

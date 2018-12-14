@@ -86,6 +86,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'ambv/black', { 'for': 'python' }
+Plug 'mileszs/ack.vim'
 
 " Themes
 Plug 'KKPMW/oldbook-vim' 
@@ -106,6 +107,12 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Ack
+if executable('ag')
+	let g:ackprg = 'ag --vimgrep'
+endif
+map <Leader>/ :Ack<CR>
 
 command! FZFBuffers call fzf#run({'source': map(range(1, bufnr('$')), 'bufname(v:val)'), 'sink': 'e', 'down': '30%'})
 map <Leader>b :FZFBuffers<CR>

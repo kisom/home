@@ -21,7 +21,10 @@ set termguicolors
 set ttyfast
 source /usr/share/vim/vim80/ftplugin/man.vim
 
-nnoremap <C-N> :bnext<CR>
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
+imap <C-X><C-O> <C-N> 
 nnoremap <C-P> :bprev<CR>
 
 " KNR mode and highlight lines > 80 chars
@@ -87,6 +90,7 @@ Plug 'junegunn/fzf'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'ambv/black', { 'for': 'python' }
 Plug 'mileszs/ack.vim'
+Plug 'ervandew/supertab'
 
 " Themes
 Plug 'KKPMW/oldbook-vim' 
@@ -112,9 +116,10 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 if executable('ag')
 	let g:ackprg = 'ag --vimgrep'
 endif
-map <Leader>/ :Ack<CR>
+map <Leader>/ :Ack 
 
 command! FZFBuffers call fzf#run({'source': map(range(1, bufnr('$')), 'bufname(v:val)'), 'sink': 'e', 'down': '30%'})
 map <Leader>b :FZFBuffers<CR>
 
+map <Leader>i :GoImports<CR>
 colorscheme oldbook

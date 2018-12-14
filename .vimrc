@@ -16,10 +16,9 @@ set showcmd
 set showmatch
 set showmode
 set tags=./tags,tags,/usr/src/sys/arch/amd64/tags,/var/db/libc.tags
-set term=screen-256color
+set t_Co=256
+set termguicolors
 set ttyfast
-colorscheme eink
-set background=light
 source /usr/share/vim/vim80/ftplugin/man.vim
 
 nnoremap <C-N> :bnext<CR>
@@ -85,6 +84,13 @@ call plug#begin('~/.vim/bundle')
 
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf'
+Plug 'fatih/vim-go', { 'for': 'go' }
+
+" Themes
+Plug 'KKPMW/oldbook-vim' 
+Plug 'agreco/vim-citylights'
+Plug 'xdefrag/vim-beelzebub'
+Plug 'logico-dev/typewriter'
 
 call plug#end()
 
@@ -102,3 +108,5 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 command! FZFBuffers call fzf#run({'source': map(range(1, bufnr('$')), 'bufname(v:val)'), 'sink': 'e', 'down': '30%'})
 map <Leader>b :FZFBuffers<CR>
+
+colorscheme oldbook

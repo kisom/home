@@ -16,12 +16,25 @@ set showmatch
 set showmode
 set tags=./tags,tags,/usr/src/sys/arch/amd64/tags,/var/db/libc.tags
 set t_Co=256
-set termguicolors
 set ttyfast
 source /usr/share/vim/vim80/ftplugin/man.vim
 
 filetype plugin on
-set omnifunc=syntaxcomplete#Complete
+" Stolen shamelessly from Ryan. @vaelen/@eiginn
+"
+" settings for true color and tmux escapes for true color
+" don't run any of this in a vimdiff session
+if has('termguicolors') && $USER != 'root' && !&diff
+  if !empty($TMUX)
+    " yes thats an escape code "^[" is done via Ctrl+V then ESC
+    set t_8f=[38;2;%lu;%lu;%lum
+    set t_8b=[48;2;%lu;%lu;%lum
+  endif
+  set termguicolors
+endif
+
+nnoremap <C-N> :tag<CR>
+nnoremap <C-P> :pop<CR>
 
 imap <C-X><C-O> <C-N> 
 nnoremap <C-P> :bprev<CR>
@@ -123,7 +136,9 @@ let g:go_fmt_autosave = 1
 let g:go_fmt_command = "goimports"
 
 autocmd Filetype c,cpp  inoremap <buffer> <Leader>t :wa<CR>:silent! make test \| redraw! \| cw<CR><CR>
-autocmd Filetype go  inoremap <buffer> <Leader>t :wa<CR>:GoTest<CR>
+autocmd Filetype go  map <buffer> <Leader>t :wa<CR>:GoTest<CR>
+autocmd Filetype go  map <buffer> C-] :w<CR>:GoDef<CR>
+autocmd Filetype go  map <buffer> C-\ :w<CR>:GoDefPop<CR>
 
 
 colorscheme oldbook

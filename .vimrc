@@ -1,7 +1,6 @@
 " General options
 set backspace=indent,eol,start
 set cindent autoindent
-set cinoptions=t0,+4,(4,u4,w1
 set confirm
 set encoding=utf-8
 set incsearch
@@ -26,13 +25,6 @@ set omnifunc=syntaxcomplete#Complete
 
 imap <C-X><C-O> <C-N> 
 nnoremap <C-P> :bprev<CR>
-
-" KNR mode and highlight lines > 80 chars
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.*/
-let c_space_errors=1
-" line
-set cinoptions=:0,t0,+4,(4
 
 " fix glitches in certain terminals
 " backspace
@@ -90,13 +82,13 @@ Plug 'junegunn/fzf'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'ambv/black', { 'for': 'python' }
 Plug 'mileszs/ack.vim'
-Plug 'ervandew/supertab'
 
 " Themes
 Plug 'KKPMW/oldbook-vim' 
 Plug 'agreco/vim-citylights'
 Plug 'xdefrag/vim-beelzebub'
 Plug 'logico-dev/typewriter'
+Plug 'vim-scripts/wombat256.vim'
 
 call plug#end()
 
@@ -112,14 +104,26 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
+command! FZFBuffers call fzf#run({'source': map(range(1, bufnr('$')), 'bufname(v:val)'), 'sink': 'e', 'down': '30%'})
+map <Leader>b :FZFBuffers<CR>
+
 " Ack
 if executable('ag')
 	let g:ackprg = 'ag --vimgrep'
 endif
+
+" The space is signficant.
 map <Leader>/ :Ack 
 
-command! FZFBuffers call fzf#run({'source': map(range(1, bufnr('$')), 'bufname(v:val)'), 'sink': 'e', 'down': '30%'})
-map <Leader>b :FZFBuffers<CR>
-
+" Go stuff
 map <Leader>i :GoImports<CR>
+map <Leader>i :GoImports<CR>
+
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"
+
+autocmd Filetype c,cpp  inoremap <buffer> <Leader>t :wa<CR>:silent! make test \| redraw! \| cw<CR><CR>
+autocmd Filetype go  inoremap <buffer> <Leader>t :wa<CR>:GoTest<CR>
+
+
 colorscheme oldbook

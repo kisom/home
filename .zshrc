@@ -21,3 +21,5 @@ PS1="%~
 source $HOME/.profile
 eval "$(direnv hook zsh)"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

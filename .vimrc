@@ -20,18 +20,6 @@ set ttyfast
 source /usr/share/vim/vim80/ftplugin/man.vim
 
 filetype plugin on
-" Stolen shamelessly from Ryan. @vaelen/@eiginn
-"
-" settings for true color and tmux escapes for true color
-" don't run any of this in a vimdiff session
-if has('termguicolors') && $USER != 'root' && !&diff
-  if !empty($TMUX)
-    " yes thats an escape code "^[" is done via Ctrl+V then ESC
-    set t_8f=[38;2;%lu;%lu;%lum
-    set t_8b=[48;2;%lu;%lu;%lum
-  endif
-  set termguicolors
-endif
 
 nnoremap <C-N> :tag<CR>
 nnoremap <C-P> :pop<CR>

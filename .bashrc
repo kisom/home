@@ -151,3 +151,5 @@ if [ -d /opt/movidius ]
 then
 	export PYTHONPATH="${PYTHONPATH}:/opt/movidius/caffe/python"
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

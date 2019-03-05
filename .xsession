@@ -5,4 +5,10 @@ else
 	xsetroot -solid "#000000"
 fi
 xmodmap $HOME/.xmodmaprc
-exec ssh-agent /usr/local/bin/stumpwm
+
+if [ -x /usr/local/bin/stumpwm ]
+then
+	exec ssh-agent /usr/local/bin/stumpwm
+else
+	exec ssh-agent /usr/bin/i3
+fi

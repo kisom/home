@@ -17,14 +17,13 @@ set showmode
 set tags=./tags,tags,/usr/src/sys/arch/amd64/tags,/var/db/libc.tags
 set t_Co=256
 set ttyfast
-source /usr/share/vim/vim80/ftplugin/man.vim
+source /usr/share/vim/vim81/ftplugin/man.vim
 
 filetype plugin on
 
 nnoremap <C-N> :tag<CR>
 nnoremap <C-P> :pop<CR>
 
-imap <C-X><C-O> <C-N> 
 nnoremap <C-P> :bprev<CR>
 
 " fix glitches in certain terminals
@@ -83,6 +82,7 @@ Plug 'junegunn/fzf'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'ambv/black', { 'for': 'python' }
 Plug 'mileszs/ack.vim'
+Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 
 " Themes
 Plug 'KKPMW/oldbook-vim' 
@@ -123,6 +123,7 @@ map <Leader>i :GoImports<CR>
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = "goimports"
 
+au FileType rust nmap gd <Plug>(rust-def)
 autocmd Filetype c,cpp  inoremap <buffer> <Leader>t :wa<CR>:silent! make test \| redraw! \| cw<CR><CR>
 autocmd Filetype go  map <buffer> <Leader>t :wa<CR>:GoTest<CR>
 autocmd Filetype go  map <buffer> C-] :w<CR>:GoDef<CR>

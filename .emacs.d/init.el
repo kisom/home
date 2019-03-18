@@ -94,6 +94,16 @@
   ;; Replace "sbcl" with the path to your implementation
   (setq inferior-lisp-program "sbcl"))
 
+
+;;; rust stuff
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+(add-hook 'racer-mode-hook #'company-mode)
+
+(require 'rust-mode)
+(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+(setq company-tooltip-align-annotations t)
+
 ;;; 
 ;;;                                                      _:_
 ;;;                                                     '-.-'
@@ -127,7 +137,7 @@
  '(global-font-lock-mode t)
  '(package-selected-packages
    (quote
-    (go-rename blackboard-bold-mode blacken jedi minimal-theme monochrome-theme monotropic-theme nimbus-theme noctilux-theme nord-theme nordless-theme northcode-theme paganini-theme paper-theme melancholy-theme go-imports guile-scheme slime chess pelican-mode gnugo go go-autocomplete go-direx go-guru go-mode anaconda-mode markdown-mode irfc scpaste cargo undo-tree magit auto-complete))))
+    (company-racer ac-racer racer erlang go-rename blackboard-bold-mode blacken jedi minimal-theme monochrome-theme monotropic-theme nimbus-theme noctilux-theme nord-theme nordless-theme northcode-theme paganini-theme paper-theme melancholy-theme go-imports guile-scheme slime chess pelican-mode gnugo go go-autocomplete go-direx go-guru go-mode anaconda-mode markdown-mode irfc scpaste cargo undo-tree magit auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -25,6 +25,7 @@
 	 markdown-mode
 	 paredit
 	 pelican-mode
+	 projectile
 	 racket-mode
 	 rust-mode
 	 scpaste

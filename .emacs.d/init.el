@@ -104,6 +104,12 @@
 (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
 (setq company-tooltip-align-annotations t)
 
+;;; Project Interaction Library for Emacs
+(require 'projectile)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(setq projectile-project-search-path '("~/src/" "~/code/"))
+
 ;;; 
 ;;;                                                      _:_
 ;;;                                                     '-.-'

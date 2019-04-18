@@ -1,3 +1,10 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
-emacsclient -n -c -a '' "$@"
+if [ -z  "$DISPLAY" ]
+then
+	NW=""
+else
+	NW="-n"
+fi
+
+emacsclient $NW -c -a '' "$@"

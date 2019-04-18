@@ -6,6 +6,11 @@ else
 fi
 xmodmap $HOME/.xmodmaprc
 
+if [ -f "$HOME/.fehbg" ]
+then
+	sh "$HOME/.fehbg"
+fi
+
 if [ -x /usr/local/bin/stumpwm ]
 then
 	exec ssh-agent /usr/local/bin/stumpwm

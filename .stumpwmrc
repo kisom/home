@@ -36,9 +36,9 @@
 ' (setf *window-number-map* "1234567890") ; This doesn't actually do anything
 
 (run-commands
- "gnewbg Browse" ;; F2
- "gnewbg IRC"    ;; F3
- "gnewbg Pidgin" ;; F4
+ "gnewbg G2"     ;; F2
+ "gnewbg G3"     ;; F3
+ "gnewbg G4"     ;; F4
  "gnewbg G5"     ;; F5
  "gnewbg G6"     ;; F6
  "gnewbg G7"     ;; F7
@@ -118,10 +118,9 @@
                           :output stream))))
 
 (defcommand lock () ()
-  "Lock the screen by invoking xscreensaver."
+  "Lock the screen by invoking i3lock."
   (stumpwm:echo-string (current-screen) "Locking screen...")
-  (sb-ext:run-program "/usr/bin/xscreensaver-command"
-		      '("-lock")))
+  (sb-ext:run-program "/usr/bin/i3lock" nil))
 
 (defun exec-for-status (path &rest args)
   "Run the path with args and return the status code."
@@ -151,18 +150,19 @@
 (defun browse-manifest ()
   (format nil "exec ~A ~A" *default-browser* *manifest-url*))
 (run-shell-command "ssh-add")
-(define-key stumpwm:*root-map* (kbd "B") "run-shell-command conkeror")
+(define-key stumpwm:*root-map* (kbd "B") "exec firefox")
+(define-key stumpwm:*root-map* (kbd "c") "exec gnome-terminal")
 (define-key *root-map* (kbd "b") "acpi-status")
-(define-key *root-map* (kbd "RET") "exec xterm -e zsh -c fish")
+(define-key *root-map* (kbd "RET") "exec gnome-terminal")
 (define-key *root-map* (kbd "d") "exec dmenu_run")
 (define-key *root-map* (kbd "e") "exec emacsclient -c -a \"\"")
-(define-key *root-map* (kbd "E") "exec xterm -e emacsclient -c -nw -a \"\"")
+(define-key *root-map* (kbd "E") "exec gnome-terminal -e 'emacsclient -c -nw -a \"\"'")
 (define-key *root-map* (kbd "l") "lock")
-(define-key *root-map* (kbd "w") "exec xterm -e wicd-curses")
+(define-key *root-map* (kbd "w") "exec xterm -e nmtui-connect")
 (define-key *root-map* (kbd "C-r") "exec xterm -e racket")
-(define-key *root-map* (kbd "g") "exec xterm -e ghci")
-(define-key *root-map* (kbd "C-i") "exec xterm -e ipython")
-(define-key *root-map* (kbd "C-l") "exec SBCL_HOME=/usr/local/lib/sbcl xterm -e rlwrap sbcl --load /home/kyle/.sbcl-repl-util.lisp")
+(define-key *root-map* (kbd "g") "exec gnome-terminal -e ghci")
+(define-key *root-map* (kbd "C-i") "exec gnome-terminal -e ipython")
+(define-key *root-map* (kbd "C-l") "exec SBCL_HOME=/usr/lib/sbcl xterm -e rlwrap sbcl --load /home/kyle/.sbcl-repl-util.lisp")
 (define-key *root-map* (kbd "C-d") (browse-manifest))
 (define-key *root-map* (kbd "`") "scratch-pad")
 (define-key *root-map* (kbd "~") "scratch-pad-float")
@@ -176,8 +176,8 @@
 ;; show input bar in centre of screen
 (setf *input-window-gravity* :center)
 
-(sb-ext:run-program "/usr/bin/xsetroot"
-                    '("-solid" "black"))
+(sb-ext:run-program "/bin/sh"
+                    '("/home/kyle/.fehbg"))
 (message "Ready.")
 
 ;; add ssh keys

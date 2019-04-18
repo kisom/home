@@ -6,8 +6,7 @@
   (package-refresh-contents))
 
 (let ((initial-package-list
-       '(anaconda-mode
-	 auto-complete
+       '(auto-complete
 	 cargo
 	 chess
 	 geiser
@@ -18,6 +17,7 @@
 	 go-guru
 	 go-mode
 	 irfc
+	 jedi
          keychain-environment
 	 lua-mode
 	 luarocks

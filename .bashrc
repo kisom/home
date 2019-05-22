@@ -153,3 +153,8 @@ then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+if [ -d /snap/bin ]
+then
+	export PATH=$PATH:/snap/bin
+fi

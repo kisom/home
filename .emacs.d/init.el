@@ -26,6 +26,9 @@
 ;; useful when writing
 (global-set-key (kbd "C-c w") 'count-words)
 
+;; remove whitespace to make room for more cyberspace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; hippie-expand is the best
 (require 'hippie-exp)
 (require 'auto-complete)

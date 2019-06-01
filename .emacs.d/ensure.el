@@ -8,7 +8,7 @@
 (let ((initial-package-list
        '(auto-complete
 	 cargo
-	 chess
+	 ;; chess
 	 geiser
 	 gnugo
 	 go ;; play the game
@@ -21,7 +21,7 @@
          keychain-environment
 	 lua-mode
 	 luarocks
-	 magit
+	 ;; magit
 	 markdown-mode
 	 paredit
 	 pelican-mode
@@ -29,7 +29,7 @@
 	 racket-mode
 	 rust-mode
 	 scpaste
-	 slime
+	 ;; slime
 	 undo-tree)))
   (dolist (package initial-package-list)
     (ensure-package package)))

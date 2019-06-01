@@ -19,7 +19,7 @@ PS1="%~
 (%?) <`hostname -s`:`whoami`> $ "
 
 source $HOME/.profile
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

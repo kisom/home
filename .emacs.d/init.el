@@ -14,7 +14,7 @@
 (let* ((home-dir (getenv "HOME"))
        (ensure-lisp (concatenate 'string home-dir "/.emacs.d/ensure.el")))
   (load ensure-lisp))
- 
+
 ;; reduce brain damage
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -70,7 +70,7 @@
 
 (require 'scpaste)
 (setq scpaste-http-destination "https://p.kyleisom.net"
-      scpaste-scp-destination "p.kyleisom.net:sites/p/")
+      scpaste-scp-destination "p.kyleisom.net:/var/www/sites/p/")
 
 ;;; useful for writing
 (global-set-key (kbd "C-x w") 'count-words)
@@ -78,6 +78,7 @@
 ;;; used with pollen
 (global-set-key (kbd "C-c C-d")
 		(lambda () (interactive) (insert "\u25ca")))
+(add-to-list 'auto-mode-alist '("\\.poly.pm\\'" . text-mode))
 
 (require 'irfc)
 (require 'markdown-mode)
@@ -115,7 +116,7 @@
 (projectile-mode +1)
 
 
-;;; 
+;;;
 ;;;                                                      _:_
 ;;;                                                     '-.-'
 ;;;                                            ()      __.'.__

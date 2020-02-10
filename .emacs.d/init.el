@@ -174,8 +174,22 @@
 (put 'downcase-region 'disabled nil)
 
 (keychain-refresh-environment)
+(require 'ox-publish)
+(setq org-publish-project-alist
+      '(("notes"
+	 :base-directory "~/notes/"
+	 :publishing-directory "/ssh:phobos.wntrmute.net:/var/www/sites/tmp/"
+	 :publishing-function org-html-publish-to-html
+	 :headline-levels 4             ; Just the default for this project.
+	 :auto-preamble t)
+	("notes-static"
+	 :base-directory "~/notes/"
+	 :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+	 :publishing-directory "/ssh:phobos.wntrmute.net:/var/www/sites/tmp/"
+	 :recursive t
+	 :publishing-function org-publish-attachment)))
 
 ;;; Load fira-code support.
 (when (window-system)
-  (set-frame-font "Fira Code 12"))
+  (set-frame-font "Go Mono 13"))
 ;; (load "~/.emacs.d/fira-code.el")

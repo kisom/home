@@ -13,6 +13,7 @@ keysym Control_L = Caps_Lock
 keysym Caps_Lock = Control_L
 add Lock = Caps_Lock
 add Control = Control_L
+!!!keysym Multi_key = Multi_key Meta_R
 
 !!! On the X60, I kept hitting F1 instead of escape. Instead of learning
 !!! where the key actually was, I just made it do what I thought it

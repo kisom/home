@@ -10,13 +10,13 @@
 	 cargo
 	 ;; chess
 	 geiser
-	 gnugo
+	 ;; gnugo
 	 go ;; play the game
 	 go-autocomplete
 	 go-direx
 	 go-guru
 	 go-mode
-	 irfc
+	 ;; irfc
 	 jedi
          keychain-environment
 	 lua-mode
@@ -29,7 +29,7 @@
 	 racket-mode
 	 rust-mode
 	 scpaste
-	 ;; slime
+	 slime
 	 undo-tree)))
   (dolist (package initial-package-list)
     (ensure-package package)))

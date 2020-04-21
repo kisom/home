@@ -8,7 +8,7 @@
 (defvar *manifest-url*
   (manifest:start))
 
-(defparameter *default-browser* "google-chrome")
+(defparameter *default-browser* "firefox")
 
 (let ((server-running nil))
   (defcommand swank () ()
@@ -151,22 +151,21 @@
   (format nil "exec ~A ~A" *default-browser* *manifest-url*))
 (run-shell-command "ssh-add")
 (define-key stumpwm:*root-map* (kbd "B") "exec firefox")
-(define-key stumpwm:*root-map* (kbd "c") "exec gnome-terminal")
+(define-key stumpwm:*root-map* (kbd "c") "exec mate-terminal")
 (define-key *root-map* (kbd "b") "acpi-status")
-(define-key *root-map* (kbd "RET") "exec gnome-terminal")
+(define-key *root-map* (kbd "RET") "exec mate-terminal")
 (define-key *root-map* (kbd "d") "exec dmenu_run")
 (define-key *root-map* (kbd "e") "exec emacsclient -c -a \"\"")
-(define-key *root-map* (kbd "E") "exec gnome-terminal -e 'emacsclient -c -nw -a \"\"'")
+(define-key *root-map* (kbd "E") "exec mate-terminal -e 'emacsclient -c -nw -a \"\"'")
 (define-key *root-map* (kbd "l") "lock")
-(define-key *root-map* (kbd "w") "exec xterm -e nmtui-connect")
-(define-key *root-map* (kbd "C-r") "exec xterm -e racket")
+(define-key *root-map* (kbd "w") "exec mate-terminal -e nmtui-connect")
 (define-key *root-map* (kbd "g") "exec gnome-terminal -e ghci")
-(define-key *root-map* (kbd "C-i") "exec gnome-terminal -e ipython")
-(define-key *root-map* (kbd "C-l") "exec SBCL_HOME=/usr/lib/sbcl xterm -e rlwrap sbcl --load /home/kyle/.sbcl-repl-util.lisp")
+(define-key *root-map* (kbd "C-i") "exec mate-terminal -e ipython")
+(define-key *root-map* (kbd "C-l") "exec mate-terminal -e rlwrap sbcl")
 (define-key *root-map* (kbd "C-d") (browse-manifest))
 (define-key *root-map* (kbd "`") "scratch-pad")
 (define-key *root-map* (kbd "~") "scratch-pad-float")
-(define-key *root-map* (kbd "M") "exec xterm -e htop")
+(define-key *root-map* (kbd "M") "exec mate-terminal -e htop")
 (define-key *root-map* (kbd "C-v") "exec pavucontrol")
 
 

@@ -9,6 +9,7 @@
        '(auto-complete
 	 cargo
 	 ;; chess
+	 cider
 	 geiser
 	 ;; gnugo
 	 go ;; play the game
@@ -16,12 +17,12 @@
 	 go-direx
 	 go-guru
 	 go-mode
-	 ;; irfc
+	 irfc
 	 jedi
          keychain-environment
 	 lua-mode
 	 luarocks
-	 ;; magit
+	 magit
 	 markdown-mode
 	 paredit
 	 pelican-mode

@@ -4,6 +4,7 @@
 ;; set up package handling
 (require 'package)
 
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (add-to-list 'package-archives
 	     '("marmalade" . "https://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives

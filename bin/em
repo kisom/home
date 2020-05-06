@@ -7,4 +7,9 @@ else
 	NW="-n"
 fi
 
+if [ -z "$@" ]
+then
+    cd $HOME
+fi
+
 emacsclient $NW -c -a '' "$@"

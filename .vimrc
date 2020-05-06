@@ -17,7 +17,7 @@ set showmode
 set tags=./tags,tags,/usr/src/sys/arch/amd64/tags,/var/db/libc.tags
 set t_Co=256
 set ttyfast
-source /usr/local/share/vim/vim82/ftplugin/man.vim
+source /usr/share/vim/vim81/ftplugin/man.vim
 
 filetype plugin on
 

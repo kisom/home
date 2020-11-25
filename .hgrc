@@ -26,3 +26,9 @@ histedit =
 rebase =
 shelve =
 uncommit =
+hgext.mq=
+hgext.patchbomb=
+purge=
+
+[diff]
+git = True

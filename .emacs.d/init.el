@@ -97,8 +97,21 @@
   (load (expand-file-name "~/quicklisp/slime-helper.el"))
   (ensure-package 'slime)
   ;; Replace "sbcl" with the path to your implementation
-  (setq inferior-lisp-program "sbcl"))
+  (setq inferior-lisp-program "sbcl")
+  (slime-setup '(slime-fancy
+		 slime-autodoc
+		 slime-indentation))
 
+  (setq slime-net-coding-system 'utf-8-unix
+	slime-truncate-lines nil)
+
+  (setq lisp-lambda-list-keyword-parameter-alignment t
+	lisp-lambda-list-keyword-alignment t))
+
+(add-hook 'clojure-mode-hook          #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
 ;;; rust stuff
 (add-hook 'rust-mode-hook #'racer-mode)
@@ -152,7 +165,7 @@
  '(global-font-lock-mode t)
  '(package-selected-packages
    (quote
-    (projectile company-racer ac-racer racer erlang go-rename blackboard-bold-mode blacken jedi minimal-theme monochrome-theme monotropic-theme nimbus-theme noctilux-theme nord-theme nordless-theme northcode-theme paganini-theme paper-theme melancholy-theme go-imports guile-scheme slime chess pelican-mode gnugo go go-autocomplete go-direx go-guru go-mode markdown-mode irfc scpaste cargo undo-tree magit auto-complete))))
+    (yaml-mode projectile company-racer ac-racer racer erlang go-rename blackboard-bold-mode blacken jedi minimal-theme monochrome-theme monotropic-theme nimbus-theme noctilux-theme nord-theme nordless-theme northcode-theme paganini-theme paper-theme melancholy-theme go-imports guile-scheme slime chess pelican-mode gnugo go go-autocomplete go-direx go-guru go-mode markdown-mode irfc scpaste cargo undo-tree magit auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
